@@ -1,0 +1,17 @@
+编译打包步骤如下：
+1.使用IDEA新建一个项目，命名为BigDataExp
+2.将code下代码防止src目录下
+3.设置Project Structure中Modules，添加外部jar包，包括commons-cli-1.2.jar、hadoop-common-2.7.1.jar、hadoop-hdfs-2.7.1.jar、hadoop-mapreduce-client-core-2.7.1.jar、hadoop-mapreduce-client-jobclient-2.7.4.jar、hadoop-mapreduce-client-shuffle-2.7.1.jar、ansj_seg-5.1.6.jar、nlp-lang-1.7.7.jar
+4.设置Project Structure中Artifacts，新建依赖，不指定Main Class
+5.点击Build中Build Artifacts，生成jar
+
+执行jar包命令如下：
+任务一：hadoop jar BigDataExp.jar CharacterExtracting /data/task2/novels /user/2019st01/character_extracting
+任务二：hadoop jar BigDataExp.jar CooccurrenceCounting /user/2019st01/character_extracting /user/2019st01/cooccurrence_counting
+任务三：hadoop jar BigDataExp.jar RelationBuilding /user/2019st01/cooccurrence_counting /user/2019st01/relations_freq
+任务四：hadoop jar BigDataExp.jar task4 /user/2019st01/relations_freq /user/2019st01/pagerank/GraghBuilder /user/2019st01/pagerank/PageRank/iter /user/2019st01/pagerank/GetResult
+任务五：hadoop jar BigDataExp.jar Task5 /user/2019st01/relations_freq /user/2019st01/LPA
+任务六Pagerank结果排序：hadoop jar BigDataExp.jar PageRankSort /user/2019st01/pagerank/GetResult /user/2019st01/PageRankSort
+任务六LPA结果整理已在任务五完成
+
+NOTE：运行前先清空hdfs上/user/2019st01/*，否则无法正常运行。

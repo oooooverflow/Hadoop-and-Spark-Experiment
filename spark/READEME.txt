@@ -1,0 +1,12 @@
+编译方法：
+采用sbt进行打包，将代码放置在/src/main/scala目录下，并自定义sbt文件。接着在命令行输入sbt package进行打包生成jar。
+生成的jar在target目录下。
+
+运行方法：
+首先将hadoop的输出outputs放置在与spark目录平行的目录下，然后输入以下命令执行：
+任务一：spark-submit --class CharacterExtracting Spark.jar hdfs://localhost:9000/data/novels hdfs://localhost:9000/output1
+任务二：spark-submit —class CooccurrenceCounting Spark.jar hdfs://localhost:9000/output1 hdfs://localhost:9000/output2
+任务三：spark-submit —class RelationBuilding Spark.jar hdfs://localhost:9000/output2 hdfs://localhost:9000/output3
+任务四：spark-submit --class "PageRank" pagerank-project_2.11-1.0.jar outputs/relations_freq pagerank-scala-result
+任务五：spark-submit --class "LPA" lpa-project_2.11-1.0.jar outputs/relations_freq lpa-scala-result
+任务六已在任务四和任务五中完成。
